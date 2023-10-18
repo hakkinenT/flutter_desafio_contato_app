@@ -22,7 +22,11 @@ linter:
   # producing the lint.
   rules:
     # avoid_print: false  # Uncomment to disable the `avoid_print` rule
-    # prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    prefer_single_quotes: true  # Uncomment to enable the `prefer_single_quotes` rule
+    avoid_void_async: true
+    await_only_futures: true
+    discarded_futures: true
+    unnecessary_await_in_return: true
 
 # Additional information about this file can be found at
 # https://dart.dev/guides/language/analysis-options
