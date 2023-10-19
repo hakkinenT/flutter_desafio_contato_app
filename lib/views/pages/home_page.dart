@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../controllers/contact_controller.dart';
 import '../widgets/contact_list.dart';
+import '../widgets/contact_loading_progress.dart';
 import '../widgets/empty_contact.dart';
 
 class HomePage extends StatefulWidget {
@@ -49,9 +50,7 @@ class _HomePageBody extends StatelessWidget {
     final state = context.watch<ContactController>();
 
     if (state.loading) {
-      return const Center(
-        child: CircularProgressIndicator(),
-      );
+      return const ContactLoadingProgress();
     } else if (state.contacts.isEmpty) {
       return const EmptyContact();
     } else if (state.error) {
