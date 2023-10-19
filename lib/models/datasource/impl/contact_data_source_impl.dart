@@ -22,9 +22,12 @@ class ContactDataSourceImpl implements ContactDataSource {
   }
 
   @override
-  Future<void> remove(String id) {
-    // TODO: implement remove
-    throw UnimplementedError();
+  Future<void> remove(String id) async {
+    try {
+      await customDio.dio.delete('$url/$id');
+    } catch (e) {
+      throw DataSourceException(message: e.toString());
+    }
   }
 
   @override
