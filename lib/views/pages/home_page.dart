@@ -30,7 +30,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: const Text('Contatos'),
       ),
-      body: const Teste(),
+      body: const _HomePageBody(),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
         child: const Icon(Icons.add),
@@ -39,8 +39,8 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class Teste extends StatelessWidget {
-  const Teste({super.key});
+class _HomePageBody extends StatelessWidget {
+  const _HomePageBody();
 
   @override
   Widget build(BuildContext context) {
