@@ -31,9 +31,12 @@ class ContactDataSourceImpl implements ContactDataSource {
   }
 
   @override
-  Future<void> save(Map<String, dynamic> data) {
-    // TODO: implement save
-    throw UnimplementedError();
+  Future<void> save(Map<String, dynamic> data) async {
+    try {
+      await customDio.dio.post(url, data: data);
+    } catch (e) {
+      throw DataSourceException(message: e.toString());
+    }
   }
 
   @override
