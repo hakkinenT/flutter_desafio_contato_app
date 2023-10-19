@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_desafio_contato_app/controllers/contact_controller.dart';
-import 'package:flutter_desafio_contato_app/views/widgets/contact_list_item.dart';
 import 'package:provider/provider.dart';
 
+import '../../controllers/contact_controller.dart';
+import '../widgets/contact_list.dart';
 import '../widgets/empty_contact.dart';
 
 class HomePage extends StatefulWidget {
@@ -59,10 +59,6 @@ class _HomePageBody extends StatelessWidget {
         child: Text(state.errorMessage!),
       );
     }
-    return ListView.builder(
-        itemCount: state.contacts.length,
-        itemBuilder: (context, index) {
-          return ContactListItem(contact: state.contacts[index]);
-        });
+    return ContactList(contacts: state.contacts);
   }
 }
