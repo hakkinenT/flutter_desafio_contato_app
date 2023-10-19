@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/contact_controller.dart';
+import '../widgets/contact_error.dart';
 import '../widgets/contact_list.dart';
 import '../widgets/contact_loading_progress.dart';
 import '../widgets/empty_contact.dart';
@@ -54,9 +55,7 @@ class _HomePageBody extends StatelessWidget {
     } else if (state.contacts.isEmpty) {
       return const EmptyContact();
     } else if (state.error) {
-      return Center(
-        child: Text(state.errorMessage!),
-      );
+      return ContactError(message: state.errorMessage!);
     }
     return ContactList(contacts: state.contacts);
   }
