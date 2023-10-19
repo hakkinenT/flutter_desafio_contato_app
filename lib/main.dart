@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
+import 'injection_container.dart';
 import 'themes/contact_app_color_scheme.dart';
 
 void main() async {
   await dotenv.load(fileName: '.env');
+  init();
   runApp(const MyApp());
 }
 
