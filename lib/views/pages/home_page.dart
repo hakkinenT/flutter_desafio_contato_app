@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_desafio_contato_app/controllers/contact_controller.dart';
+import 'package:flutter_desafio_contato_app/views/widgets/contact_list_item.dart';
 import 'package:provider/provider.dart';
 
 import '../widgets/empty_contact.dart';
@@ -61,10 +62,7 @@ class _HomePageBody extends StatelessWidget {
     return ListView.builder(
         itemCount: state.contacts.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            leading: const Icon(Icons.person),
-            title: Text(state.contacts[index].name),
-          );
+          return ContactListItem(contact: state.contacts[index]);
         });
   }
 }
