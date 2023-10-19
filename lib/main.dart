@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_desafio_contato_app/controllers/contact_controller.dart';
+import 'package:flutter_desafio_contato_app/views/pages/home_page.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:provider/provider.dart';
 
@@ -15,7 +16,6 @@ void main() async {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider.value(
@@ -24,9 +24,7 @@ class MyApp extends StatelessWidget {
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-        darkTheme: ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-        themeMode: ThemeMode.dark,
-        home: const MyHomePage(title: 'Flutter Demo Home Page'),
+        home: const HomePage(),
       ),
     );
   }
