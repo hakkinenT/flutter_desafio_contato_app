@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_desafio_contato_app/views/pages/register_contact/register_contact_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/contact_controller.dart';
@@ -36,7 +37,14 @@ class _HomePageState extends State<HomePage> {
       ),
       body: const _HomePageBody(),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          await Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (_) => const RegisterContactPage(),
+            ),
+          );
+        },
         child: const Icon(Icons.add),
       ),
     );
