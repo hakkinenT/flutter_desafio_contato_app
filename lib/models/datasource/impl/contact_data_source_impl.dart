@@ -40,8 +40,11 @@ class ContactDataSourceImpl implements ContactDataSource {
   }
 
   @override
-  Future<void> update(String id, Map<String, dynamic> data) {
-    // TODO: implement update
-    throw UnimplementedError();
+  Future<void> update(String id, Map<String, dynamic> data) async {
+    try {
+      await customDio.dio.put('$url/$id', data: data);
+    } catch (e) {
+      throw DataSourceException(message: e.toString());
+    }
   }
 }
