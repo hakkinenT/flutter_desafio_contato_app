@@ -11,7 +11,7 @@ final sl = GetIt.instance;
 
 init() {
   //* CONTROLLER
-  sl.registerFactory(
+  sl.registerLazySingleton(
     () => ContactController(
       repository: sl(),
     ),
