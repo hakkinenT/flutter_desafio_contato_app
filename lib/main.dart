@@ -5,7 +5,6 @@ import 'themes/contact_app_color_scheme.dart';
 
 void main() async {
   await dotenv.load(fileName: '.env');
-
   runApp(const MyApp());
 }
 
