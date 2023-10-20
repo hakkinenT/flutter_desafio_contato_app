@@ -1,14 +1,14 @@
 class Contact {
-  String? objectId;
-  String name;
-  DateTime? birthDate;
-  String photo;
-  String phone;
-  String? place;
-  String? number;
-  String? neighborhood;
-  String? city;
-  String? state;
+  final String? objectId;
+  final String name;
+  final DateTime? birthDate;
+  final String photo;
+  final String phone;
+  final String? place;
+  final String? number;
+  final String? neighborhood;
+  final String? city;
+  final String? state;
 
   Contact({
     required this.name,
