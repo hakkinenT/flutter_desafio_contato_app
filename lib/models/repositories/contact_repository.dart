@@ -1,4 +1,4 @@
-import 'package:flutter_desafio_contato_app/models/contact.dart';
+import 'package:flutter_desafio_contato_app/models/entities/contact.dart';
 
 abstract interface class ContactRepository {
   Future<void> save(Contact contact);

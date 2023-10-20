@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_desafio_contato_app/models/contact.dart';
+import 'package:flutter_desafio_contato_app/models/entities/contact.dart';
 import 'package:flutter_desafio_contato_app/models/repositories/contact_repository.dart';
 
 import '../models/exceptions/data_source_exception.dart';

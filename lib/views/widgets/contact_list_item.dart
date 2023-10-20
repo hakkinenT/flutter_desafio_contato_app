@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/contact.dart';
+import '../../models/entities/contact.dart';
 
 class ContactListItem extends StatelessWidget {
   const ContactListItem({super.key, required this.contact});
