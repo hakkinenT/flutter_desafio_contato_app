@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class FinishButton extends StatelessWidget {
   const FinishButton({super.key, required this.onPressed});
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
