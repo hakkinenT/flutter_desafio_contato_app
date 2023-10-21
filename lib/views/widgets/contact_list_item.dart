@@ -1,6 +1,5 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_desafio_contato_app/views/widgets/avatar_photo.dart';
 
 import '../../models/entities/contact.dart';
 
@@ -11,12 +10,17 @@ class ContactListItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListTile(
-      leading: CircleAvatar(
-        radius: 30,
-        backgroundImage: Image.file(File(contact.photo)).image,
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: ListTile(
+          leading: AvatarPhoto(
+            radius: 30,
+            fileName: contact.photo,
+          ),
+          title: Text(contact.name),
+        ),
       ),
-      title: Text(contact.name),
     );
   }
 }
