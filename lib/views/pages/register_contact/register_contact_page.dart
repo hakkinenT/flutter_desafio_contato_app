@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_desafio_contato_app/controllers/camera_controller.dart';
-import 'package:flutter_desafio_contato_app/controllers/register_contact_page_view_controller.dart';
-import 'package:flutter_desafio_contato_app/models/contact_model.dart';
-import 'package:flutter_desafio_contato_app/views/pages/register_contact/register_page_view_items.dart';
 import 'package:provider/provider.dart';
+
+import '../../../controllers/camera_controller.dart';
+import '../../../controllers/register_contact_page_view_controller.dart';
+import '../../../models/contact_model.dart';
+import 'register_page_view_items.dart';
 
 class RegisterContactPage extends StatelessWidget {
   const RegisterContactPage({super.key});
