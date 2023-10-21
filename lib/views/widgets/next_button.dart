@@ -4,7 +4,7 @@ import 'package:flutter_desafio_contato_app/views/widgets/directional_button_lab
 class NextButton extends StatelessWidget {
   const NextButton({super.key, required this.onPressed});
 
-  final VoidCallback onPressed;
+  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
