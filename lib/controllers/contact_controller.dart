@@ -43,6 +43,17 @@ class ContactController extends ChangeNotifier {
     notifyListeners();
   }
 
+  Future<void> remove(String objectId) async {
+    try {
+      await repository.remove(objectId);
+    } on DataSourceException catch (e) {
+      _onError(e.toString());
+    }
+
+    _clearStates();
+    notifyListeners();
+  }
+
   _showLoadingProgress() {
     loading = true;
   }
