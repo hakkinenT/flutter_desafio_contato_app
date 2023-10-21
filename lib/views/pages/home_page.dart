@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_desafio_contato_app/views/pages/register_contact/register_contact_page.dart';
 import 'package:provider/provider.dart';
 
 import '../../controllers/contact_controller.dart';
@@ -7,6 +6,7 @@ import '../widgets/contact_error.dart';
 import '../widgets/contact_list.dart';
 import '../widgets/contact_loading_progress.dart';
 import '../widgets/empty_contact.dart';
+import 'register_contact/register_contact_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
