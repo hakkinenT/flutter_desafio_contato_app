@@ -6,6 +6,7 @@ import '../../../controllers/contact_controller.dart';
 import '../../../controllers/register_contact_page_view_controller.dart';
 import '../../../models/contact_model.dart';
 import '../../widgets/avatar_photo.dart';
+import '../../widgets/custom_snack_bar.dart';
 import '../../widgets/custom_text_button.dart';
 import '../../widgets/directional_button_controll_panel.dart';
 import '../../widgets/finish_button.dart';
@@ -75,7 +76,6 @@ class PhotoData extends StatelessWidget {
     final controller = Provider.of<ContactController>(context, listen: false);
     final navigator = Navigator.of(context);
     final scaffoldMessenger = ScaffoldMessenger.of(context);
-    final theme = Theme.of(context);
 
     _setPhoto(camera, contactModel);
 
@@ -85,21 +85,13 @@ class PhotoData extends StatelessWidget {
       scaffoldMessenger
         ..hideCurrentSnackBar()
         ..showSnackBar(
-          SnackBar(
-            backgroundColor: theme.colorScheme.error,
-            content: Text(controller.errorMessage!),
-          ),
+          errorSnackBar(message: controller.errorMessage!),
         );
     } else {
       scaffoldMessenger
         ..hideCurrentSnackBar()
         ..showSnackBar(
-          const SnackBar(
-            backgroundColor: Colors.green,
-            content: Text(
-              'Contato cadastrado com sucesso!',
-            ),
-          ),
+          successSnackBar(message: 'Contato cadastrado com sucesso!'),
         );
     }
     await controller.getAll();
