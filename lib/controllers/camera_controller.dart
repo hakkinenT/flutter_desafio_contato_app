@@ -19,9 +19,9 @@ class CameraController extends ChangeNotifier {
   }
 
   Future<void> getPhotoFromGallery() async {
-    galleryPhotoPath = await camera.getPhotoFromGallery();
-    if (galleryPhotoPath != null) {
-      cropPhotoPath = await camera.cropImage(galleryPhotoPath!);
+    photoPath = await camera.getPhotoFromGallery();
+    if (photoPath != null) {
+      cropPhotoPath = await camera.cropImage(photoPath!);
       await _saveOnGallery(cropPhotoPath);
     }
     notifyListeners();

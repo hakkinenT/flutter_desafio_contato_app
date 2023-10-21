@@ -37,6 +37,8 @@ class CustomTextFormField extends StatelessWidget {
       readOnly: readOnly,
       inputFormatters: inputFormatters,
       decoration: InputDecoration(
+        prefixIcon: preffixIcon,
+        prefixIconColor: Theme.of(context).colorScheme.primary,
         hintText: hintText,
         hintStyle: const TextStyle(
           color: Colors.black26,

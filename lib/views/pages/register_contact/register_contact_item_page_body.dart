@@ -11,6 +11,7 @@ class RegisterContactItemPageBody extends StatelessWidget {
       padding: const EdgeInsets.all(24),
       child: Form(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: children,
         ),
       ),

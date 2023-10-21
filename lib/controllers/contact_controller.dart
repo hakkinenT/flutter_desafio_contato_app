@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_desafio_contato_app/models/contact_model.dart';
 import 'package:flutter_desafio_contato_app/models/entities/contact.dart';
 import 'package:flutter_desafio_contato_app/models/repositories/contact_repository.dart';
 
@@ -13,6 +14,19 @@ class ContactController extends ChangeNotifier {
   bool error = false;
   String? errorMessage;
   List<Contact> contacts = [];
+
+  Future<void> save(ContactModel contactModel) async {
+    try {
+      final contact = contactModel.mapToEntity();
+
+      await repository.save(contact);
+    } on DataSourceException catch (e) {
+      _onError(e.toString());
+    }
+
+    _clearStates();
+    notifyListeners();
+  }
 
   Future<void> getAll() async {
     try {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_desafio_contato_app/controllers/camera_controller.dart';
 import 'package:flutter_desafio_contato_app/controllers/register_contact_page_view_controller.dart';
+import 'package:flutter_desafio_contato_app/models/contact_model.dart';
 import 'package:flutter_desafio_contato_app/views/pages/register_contact/register_page_view_items.dart';
 import 'package:provider/provider.dart';
 
@@ -8,8 +10,13 @@ class RegisterContactPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (_) => RegisterContactPageViewController(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+            create: (_) => RegisterContactPageViewController()),
+        ChangeNotifierProvider(create: (_) => ContactModel()),
+        ChangeNotifierProvider(create: (_) => CameraController())
+      ],
       child: const RegisterContactView(),
     );
   }
