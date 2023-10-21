@@ -1,12 +1,11 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_desafio_contato_app/models/contact_model.dart';
-import 'package:flutter_desafio_contato_app/models/repositories/contact_repository.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controllers/camera_controller.dart';
 import '../../../controllers/contact_controller.dart';
 import '../../../controllers/register_contact_page_view_controller.dart';
+import '../../../models/contact_model.dart';
+import '../../widgets/avatar_photo.dart';
 import '../../widgets/custom_text_button.dart';
 import '../../widgets/directional_button_controll_panel.dart';
 import '../../widgets/finish_button.dart';
@@ -57,21 +56,8 @@ class PhotoData extends StatelessWidget {
                   return FinishButton(
                       onPressed: camera.photoPath != null ||
                               camera.cropPhotoPath != null
-                          ? () async {
-                              final controller = Provider.of<ContactController>(
-                                  context,
-                                  listen: false);
-
-                              if (camera.photoPath != null) {
-                                contactModel.setPhoto(camera.photoPath!);
-                              } else {
-                                contactModel.setPhoto(camera.cropPhotoPath!);
-                              }
-
-                              await controller.save(contactModel);
-                              await controller.getAll();
-                              Navigator.pop(context);
-                            }
+                          ? () async => _onFinishButtonPressed(
+                              context, camera, contactModel)
                           : null);
                 },
               )
@@ -80,6 +66,27 @@ class PhotoData extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  Future<void> _onFinishButtonPressed(BuildContext context,
+      CameraController camera, ContactModel contactModel) async {
+    final controller = Provider.of<ContactController>(context, listen: false);
+    final navigator = Navigator.of(context);
+
+    _setPhoto(camera, contactModel);
+
+    await controller.save(contactModel);
+    await controller.getAll();
+
+    navigator.pop();
+  }
+}
+
+void _setPhoto(CameraController camera, ContactModel contactModel) {
+  if (camera.photoPath != null) {
+    contactModel.setPhoto(camera.photoPath!);
+  } else {
+    contactModel.setPhoto(camera.cropPhotoPath!);
   }
 }
 
@@ -107,30 +114,18 @@ class _ContactPhoto extends StatelessWidget {
     return Consumer<CameraController>(
       builder: (_, camera, __) {
         if (camera.cropPhotoPath != null) {
-          return _AvatarPhoto(
+          return AvatarPhoto(
+            radius: 55,
             fileName: camera.cropPhotoPath!,
           );
         } else if (camera.cropPhotoPath == null && camera.photoPath != null) {
-          return _AvatarPhoto(
+          return AvatarPhoto(
+            radius: 55,
             fileName: camera.photoPath!,
           );
         }
         return const _EmptyAvatarPhoto();
       },
-    );
-  }
-}
-
-class _AvatarPhoto extends StatelessWidget {
-  const _AvatarPhoto({required this.fileName});
-
-  final String fileName;
-
-  @override
-  Widget build(BuildContext context) {
-    return CircleAvatar(
-      radius: 55,
-      backgroundImage: Image.file(File(fileName)).image,
     );
   }
 }
