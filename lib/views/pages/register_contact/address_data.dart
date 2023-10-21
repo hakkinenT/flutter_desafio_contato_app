@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_desafio_contato_app/models/contact_model.dart';
-import 'package:flutter_desafio_contato_app/views/widgets/next_button.dart';
-import 'package:flutter_desafio_contato_app/views/widgets/previous_button.dart';
 import 'package:provider/provider.dart';
 
 import '../../../controllers/register_contact_page_view_controller.dart';
+import '../../../models/contact_model.dart';
 import '../../widgets/contact_form_field.dart';
 import '../../widgets/directional_button_controll_panel.dart';
+import '../../widgets/next_button.dart';
 import '../../widgets/page_title.dart';
+import '../../widgets/previous_button.dart';
 import 'register_contact_item_page_body.dart';
 
 class AddressData extends StatelessWidget {
@@ -24,19 +24,19 @@ class AddressData extends StatelessWidget {
         const SizedBox(
           height: 24,
         ),
-        _PlaceInput(),
+        const _PlaceInput(),
         const SizedBox(
           height: 16,
         ),
-        _NumberInput(),
+        const _NumberInput(),
         const SizedBox(
           height: 16,
         ),
-        _NeighborhoodInput(),
+        const _NeighborhoodInput(),
         const SizedBox(
           height: 16,
         ),
-        _CityInput(),
+        const _CityInput(),
         const SizedBox(
           height: 16,
         ),
