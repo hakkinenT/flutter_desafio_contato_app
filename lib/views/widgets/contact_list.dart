@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_desafio_contato_app/controllers/contact_controller.dart';
 import 'package:provider/provider.dart';
 
+import '../../controllers/contact_controller.dart';
 import '../../models/entities/contact.dart';
 import 'contact_list_item.dart';
+import 'custom_snack_bar.dart';
 
 class ContactList extends StatelessWidget {
   const ContactList({super.key, required this.contacts});
@@ -21,39 +22,33 @@ class ContactList extends StatelessWidget {
       itemBuilder: (context, index) {
         return ContactListItem(
           contact: contacts[index],
-          onDeleteButtonPressed: () async {
-            final controller =
-                Provider.of<ContactController>(context, listen: false);
-            final scaffoldMessenger = ScaffoldMessenger.of(context);
-            final theme = Theme.of(context);
-
-            await controller.remove(contacts[index].objectId!);
-
-            if (controller.error) {
-              scaffoldMessenger
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  SnackBar(
-                    backgroundColor: theme.colorScheme.error,
-                    content: Text(controller.errorMessage!),
-                  ),
-                );
-            } else {
-              scaffoldMessenger
-                ..hideCurrentSnackBar()
-                ..showSnackBar(
-                  const SnackBar(
-                    backgroundColor: Colors.green,
-                    content: Text(
-                      'Contato removido com sucesso!',
-                    ),
-                  ),
-                );
-            }
-            await controller.getAll();
-          },
+          onDeleteButtonPressed: () async =>
+              _onDeleteButtonPressed(context, contacts[index]),
         );
       },
     );
+  }
+
+  Future<void> _onDeleteButtonPressed(
+      BuildContext context, Contact contact) async {
+    final controller = Provider.of<ContactController>(context, listen: false);
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+
+    await controller.remove(contact.objectId!);
+
+    if (controller.error) {
+      scaffoldMessenger
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          errorSnackBar(message: controller.errorMessage!),
+        );
+    } else {
+      scaffoldMessenger
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          successSnackBar(message: 'Contato removido com sucesso!'),
+        );
+    }
+    await controller.getAll();
   }
 }
