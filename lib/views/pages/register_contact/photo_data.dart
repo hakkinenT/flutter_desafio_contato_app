@@ -25,46 +25,48 @@ class PhotoData extends StatelessWidget {
 
     return Padding(
       padding: const EdgeInsets.all(24.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const PageTitle(title: 'Foto do Contato'),
-          const SizedBox(
-            height: 32,
-          ),
-          const ContactAvatar(),
-          const SizedBox(
-            height: 24,
-          ),
-          _TakeAPhotoButton(
-            onPressed: () async => cameraController.takeAPhoto(),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          _OpenGalleryButton(
-              onPressed: () async => cameraController.getPhotoFromGallery()),
-          const SizedBox(
-            height: 180,
-          ),
-          DirectionalButtonControllPanel(
-            children: [
-              PreviousButton(
-                  onPressed: () => pageViewController.previousPage()),
-              Consumer<CameraController>(
-                builder: (_, camera, __) {
-                  return FinishButton(
-                      onPressed: camera.photoPath != null ||
-                              camera.cropPhotoPath != null
-                          ? () async => _onFinishButtonPressed(
-                              context, camera, contactModel)
-                          : null);
-                },
-              )
-            ],
-          )
-        ],
-      ),
+      child: Consumer<CameraController>(builder: (_, camera, __) {
+        return Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const PageTitle(title: 'Foto do Contato'),
+            const SizedBox(
+              height: 32,
+            ),
+            const ContactAvatar(),
+            const SizedBox(
+              height: 24,
+            ),
+            _TakeAPhotoButton(
+              onPressed: () async => cameraController.takeAPhoto(),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            _OpenGalleryButton(
+                onPressed: () async => cameraController.getPhotoFromGallery()),
+            const SizedBox(
+              height: 180,
+            ),
+            DirectionalButtonControllPanel(
+              children: [
+                PreviousButton(
+                    onPressed: () => pageViewController.previousPage()),
+                Consumer<CameraController>(
+                  builder: (_, camera, __) {
+                    return FinishButton(
+                        onPressed: camera.photoPath != null ||
+                                camera.cropPhotoPath != null
+                            ? () async => _onFinishButtonPressed(
+                                context, camera, contactModel)
+                            : null);
+                  },
+                )
+              ],
+            )
+          ],
+        );
+      }),
     );
   }
 
@@ -72,10 +74,34 @@ class PhotoData extends StatelessWidget {
       CameraController camera, ContactModel contactModel) async {
     final controller = Provider.of<ContactController>(context, listen: false);
     final navigator = Navigator.of(context);
+    final scaffoldMessenger = ScaffoldMessenger.of(context);
+    final theme = Theme.of(context);
 
     _setPhoto(camera, contactModel);
 
     await controller.save(contactModel);
+
+    if (controller.error) {
+      scaffoldMessenger
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          SnackBar(
+            backgroundColor: theme.colorScheme.error,
+            content: Text(controller.errorMessage!),
+          ),
+        );
+    } else {
+      scaffoldMessenger
+        ..hideCurrentSnackBar()
+        ..showSnackBar(
+          const SnackBar(
+            backgroundColor: Colors.green,
+            content: Text(
+              'Contato cadastrado com sucesso!',
+            ),
+          ),
+        );
+    }
     await controller.getAll();
 
     navigator.pop();
@@ -83,7 +109,7 @@ class PhotoData extends StatelessWidget {
 }
 
 void _setPhoto(CameraController camera, ContactModel contactModel) {
-  if (camera.photoPath != null) {
+  if (camera.photoPath != null && camera.cropPhotoPath == null) {
     contactModel.setPhoto(camera.photoPath!);
   } else {
     contactModel.setPhoto(camera.cropPhotoPath!);
