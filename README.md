@@ -46,7 +46,8 @@ OU
 - Cadastrar Contato
 - Tirar foto do Contato
 - Obter foto da Galeria
-- Cortar a foto
+- Recortar foto
+- Aplicar filtros na foto
 
 
 ## Tecnologias Utilizadas
