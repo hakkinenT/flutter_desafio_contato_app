@@ -15,30 +15,17 @@ O aplicativo Contato App permite ao usuário cadastrar Contatos. Além de inform
 
 ## Screenshots
 <p float="left">
-    <img src="https://via.placeholder.com/270x480?text=App+Screenshot+Here" alt="screencap 1" width="270" height="480"/>
-    <img src="https://via.placeholder.com/270x480?text=App+Screenshot+Here" alt="screencap 2" width="270" height="480"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/screen1.png" width="180" height="370"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/screen2.png" width="180" height="370"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/screen3.png" width="180" height="370"/>
 </p>
-
-OU
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
+<p float="left">
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/screen4.png" width="180" height="370"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/screen5.png" width="180" height="370"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/screen6.png" width="180" height="370"/>
+</p>
 
 ## Demonstração
-Insira um gif ou um link de alguma demonstração
-
-
-<p float="left">
-    <img src="https://49.media.tumblr.com/af1c15da12dded7ecd2f1f2ed7950b67/tumblr_nx9cbuEyvx1qz8q0ho1_400.gif" alt="screencap 1" width="270" height="480"/>
-    <img src="https://49.media.tumblr.com/af1c15da12dded7ecd2f1f2ed7950b67/tumblr_nx9cbuEyvx1qz8q0ho1_400.gif" alt="screencap 2" width="270" height="480"/>
-</p>
-
-OU
-
-![App Screenshot](https://49.media.tumblr.com/af1c15da12dded7ecd2f1f2ed7950b67/tumblr_nx9cbuEyvx1qz8q0ho1_400.gif)
-
-OU
-[Link para Demonstração](https://49.media.tumblr.com/af1c15da12dded7ecd2f1f2ed7950b67/tumblr_nx9cbuEyvx1qz8q0ho1_400.gif)
 
 
 ## Funcionalidades
