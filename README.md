@@ -27,6 +27,17 @@ O aplicativo Contato App permite ao usuário cadastrar Contatos. Além de inform
 
 ## Demonstração
 
+<p float="left">
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/video1.gif" width="180" height="370"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/video3.gif" width="180" height="370"/>
+</p>
+<p float="left">
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/dados-pessoais.gif" width="280" height="470"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/endereco.gif" width="280" height="470"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/tirar-foto.gif" width="280" height="470"/>
+    <img src="https://github.com/hakkinenT/assets/blob/master/flutter-projects/flutter-contact-app/cropper-foto.gif" width="280" height="470"/>
+</p>
+
 
 ## Funcionalidades
 
